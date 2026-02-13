@@ -67,6 +67,11 @@ button {
     color: white;
 }
 
+.watchMemory {
+    background-color: #ff85b3;
+    color: white;
+}
+
 button:hover {
     transform: scale(1.1);
 }
@@ -105,6 +110,14 @@ button:hover {
     z-index: 1000;
     display: none; /* hidden by default */
 }
+
+/* VIDEO */
+#memoryVideo {
+    display: none;
+    margin-top: 20px;
+    max-width: 100%;
+    border-radius: 12px;
+}
 </style>
 </head>
 
@@ -114,7 +127,7 @@ button:hover {
 <div id="page1" class="page">
     <h1>Phina ❤️</h1>
     <p>Today is Valentine’s Day,</p>
-    <p>and my heart can’t stop thinking of you.<br>Does your heart still feel a little love for me?</p>
+    <p>I miss you every times, and my heart can’t stop thinking of you.<br>Does your heart still feel a little love for me?</p>
     <button class="yes" onclick="choose('yes')">Yes</button>
     <button class="no" onclick="choose('no')">No</button>
 </div>
@@ -129,6 +142,14 @@ button:hover {
     <p>No matter what happens, I wish you happiness, peace, and love. You deserve all the beautiful things in this world.</p>
     <p>Always caring for you ❤️</p>
     <p class="last-paragraph">My love for you will never end. In my heart, you are still the prettiest girl in the world. I love you, today and always.</p>
+
+    <!-- Button to show video -->
+    <button class="watchMemory" onclick="showMemoryVideo()">Watch Our Memory</button>
+    <!-- Video element -->
+    <video id="memoryVideo" controls>
+        <source src="IMG_8192.MP4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 </div>
 
 <!-- PAGE 3 -->
@@ -164,6 +185,11 @@ function choose(choice) {
     localStorage.setItem('valentineChoice', choice);
     alert("You chose: " + (choice === 'yes' ? "Yes ❤️" : "No 🌸"));
     showPage(choice === 'yes' ? 'page2' : 'page3');
+}
+
+// Show the memory video
+function showMemoryVideo() {
+    document.getElementById('memoryVideo').style.display = 'block';
 }
 
 // On page load, check if she already chose
